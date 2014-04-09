@@ -1800,11 +1800,12 @@ static WYPopoverTheme *defaultTheme_ = nil;
     
     UIViewController *topViewController = viewController;
     
-    if ([viewController isKindOfClass:[UINavigationController class]] == YES)
-    {
-        UINavigationController *navigationController = (UINavigationController *)viewController;
-        topViewController = [navigationController topViewController];
-    }
+// The UINavigationController does the right thing, at least in iOS 7. -Don
+//    if ([viewController isKindOfClass:[UINavigationController class]] == YES)
+//    {
+//        UINavigationController *navigationController = (UINavigationController *)viewController;
+//        topViewController = [navigationController topViewController];
+//    }
     
 #ifdef WY_BASE_SDK_7_ENABLED
     if ([topViewController respondsToSelector:@selector(preferredContentSize)])
@@ -3133,7 +3134,8 @@ static CGPoint WYPointRelativeToOrientation(CGPoint origin, CGSize size, UIInter
     }
     
     if (shouldIgnore == NO) {
-        [self positionPopover:YES];
+        // We don't want this animation because it doesn't work quite right when the popover is shrinking vertically. -Don
+        [self positionPopover:NO];
     }
 }
 
@@ -3148,7 +3150,8 @@ static CGPoint WYPointRelativeToOrientation(CGPoint origin, CGSize size, UIInter
     }
     
     if (shouldIgnore == NO) {
-        [self positionPopover:YES];
+        // We don't want this animation because it doesn't work quite right when the popover is shrinking vertically. -Don
+        [self positionPopover:NO];
     }
 }
 
