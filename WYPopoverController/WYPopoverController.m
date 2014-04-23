@@ -1210,7 +1210,8 @@ static float edgeSizeFromCornerRadius(float cornerRadius) {
         CGRect rect = self.bounds;
         
         CGRect outerRect = [self outerRect:rect arrowDirection:self.arrowDirection];
-        outerRect = CGRectInset(outerRect, 0.5, 0.5);
+        // Remove this for now, because it makes the outer shape not line up with the edge of the hosted VC
+        //outerRect = CGRectInset(outerRect, 0.5, 0.5);
         
         // Inner Path
         CGMutablePathRef outerPathRef = CGPathCreateMutable();
