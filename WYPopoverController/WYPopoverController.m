@@ -31,7 +31,7 @@
 #define WY_BASE_SDK_7_ENABLED
 #endif
 
-#ifdef DEBUG
+#ifdef WY_DEBUG
 #define WY_LOG(fmt, ...)		NSLog((@"%s (%d) : " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 #else
 #define WY_LOG(...)
